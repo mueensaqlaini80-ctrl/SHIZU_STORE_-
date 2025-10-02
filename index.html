@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SHIZU STORE</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #141414;
+      color: #fff;
+    }
+    header {
+      background-color: #000;
+      padding: 20px;
+      text-align: center;
+      font-size: 24px;
+      font-weight: bold;
+      color: #e50914;
+    }
+    .category {
+      margin: 20px;
+    }
+    .category h2 {
+      margin: 10px 0;
+      color: #e5e5e5;
+    }
+    .apps {
+      display: flex;
+      overflow-x: auto;
+      gap: 15px;
+      padding: 10px 0;
+    }
+    .app {
+      background-color: #222;
+      border-radius: 8px;
+      padding: 10px;
+      width: 160px;
+      text-align: center;
+      flex: 0 0 auto;
+    }
+    .app img {
+      width: 96px;
+      height: 96px;
+      border-radius: 12px;
+    }
+    .app h3 {
+      font-size: 16px;
+      margin: 10px 0 5px;
+    }
+    .app p {
+      font-size: 12px;
+      color: #aaa;
+      margin-bottom: 10px;
+    }
+    .app a {
+      display: inline-block;
+      padding: 5px 10px;
+      background-color: #e50914;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header>🎬 SHIZU STORE 🎮</header>
+  <main id="store"></main>
+  <script>
+    async function loadApps() {
+      const res = await fetch('apps.json');
+      const data = await res.json();
+      const container = document.getElementById('store');
+
+      data.categories.forEach(cat => {
+        const section = document.createElement('div');
+        section.classList.add('category');
+        section.innerHTML = `<h2>${cat.name}</h2>`;
+
+        const appsDiv = document.createElement('div');
+        appsDiv.classList.add('apps');
+
+        cat.apps.forEach(app => {
+          const appDiv = document.createElement('div');
+          appDiv.classList.add('app');
+          appDiv.innerHTML = `
+            <img src="${app.icon}" alt="${app.name}">
+            <h3>${app.name}</h3>
+            <p>${app.description}</p>
+            <small>By: ${app.developer}</small><br><br>
+            <a href="${app.link}" target="_blank">Download</a>
+          `;
+          appsDiv.appendChild(appDiv);
+        });
+
+        section.appendChild(appsDiv);
+        container.appendChild(section);
+      });
+    }
+    loadApps();
+  </script>
+</body>
+</html>
