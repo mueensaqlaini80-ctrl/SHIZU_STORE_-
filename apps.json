@@ -1,0 +1,21 @@
+{
+  "categories": [
+    {
+      "name": "Trending Apps",
+      "apps": [
+        {
+          "name": "Instagram Pro",
+          "icon": "https://img.icons8.com/fluency/96/instagram-new.png",
+          "link": "https://www.mediafire.com/file/instapro.apk",
+          "description": "Modified Instagram with extra privacy features."
+        },
+        {
+          "name": "YouTube Vanced",
+          "icon": "https://img.icons8.com/color/96/youtube-play.png",
+          "link": "https://www.mediafire.com/file/youtubevanced.apk",
+          "description": "Ad-free YouTube with background play."
+        }
+      ]
+    }
+  ]
+}
